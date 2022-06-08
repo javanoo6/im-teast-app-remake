@@ -49,7 +49,7 @@ class GameImpl : Game {
         if (pingPongTable.getPlayerOneTablePoints().contains(playerTwoHit)) {
             println("playerTwo hits opponent's table-> game continues")
         } else {
-            println("playerTwo missed the table, playerTwo gets plus point")
+            println("playerTwo missed the table, playerOne gets plus point")
             firstPlayerScore++
             getPlayersScore()
             checkIfGameIsFinished()
