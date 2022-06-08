@@ -21,12 +21,11 @@ class PingPongTableImpl : PingPongTable {
         playerOneTablePointsForShouting = getPointsForShouting(tablePoints, playerOneTablePoints)
         playerTwoTablePointsForShouting = getPointsForShouting(tablePoints, playerTwoTablePoints)
     }
-
     private fun getPointsForShouting(
         tablePoints: Set<TablePoint>,
         tablePointsToExclude: Set<TablePoint>
     ): Set<TablePoint> {
-        val pointsForShouting: MutableSet<TablePoint> = HashSet(tablePoints)
+        val pointsForShouting = HashSet<TablePoint>(tablePoints)
         pointsForShouting.removeAll(tablePointsToExclude)
         println("Player points for Shouting $pointsForShouting")
         return pointsForShouting
