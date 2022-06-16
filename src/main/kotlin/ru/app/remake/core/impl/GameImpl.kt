@@ -6,7 +6,7 @@ import ru.app.remake.core.Player
 class GameImpl : Game {
 
     companion object {
-        val MAXIMUM_GAME_POINT = 11
+       const val MAXIMUM_GAME_POINT = 11
     }
 
     var firstPlayerScore = 0
@@ -16,62 +16,62 @@ class GameImpl : Game {
 
     override fun run(pingPongTable: PingPongTableImpl, playerOne: Player, playerTwo: Player) {
         println("PING PONG GAME BEGINS")
+        println("this is $turnCounter turn")
         while (firstPlayerScore < MAXIMUM_GAME_POINT || secondPlayerScore < MAXIMUM_GAME_POINT) {
-            println("this is $turnCounter turn")
-            playerOneMove(playerOne, pingPongTable)
-            if(isGameOver) break
-            playerTwoMove(playerTwo, pingPongTable)
-            if(isGameOver) break
-            turnCounter++
+            playerMove(playerOne, pingPongTable)
+            playerMove(playerTwo, pingPongTable)
+            if (isGameOver) break
             println()
         }
         getWinner()
     }
 
-    private fun playerOneMove(playerOne: Player, pingPongTable: PingPongTableImpl) {
-        println("playerOne's turn: ")
-        val playerOneHit = playerOne.hit()
-        if (pingPongTable.getPlayerTwoTablePoints().contains(playerOneHit)) {
-            println("playerOne hits opponent's table-> game continues")
-        } else {
-            println("playerOne missed the table, playerTwo gets plus point")
-            secondPlayerScore++
-            getPlayersScore()
-            checkIfGameIsFinished()
+    private fun playerMove(player: Player, pingPongTable: PingPongTableImpl) {
+        println("сейчас ходит ${player.name}")
+        val hit = player.hit()
+        if (player.name.contains("One")) {
+            if (pingPongTable.playerTwoTablePoints.contains(hit)) {
+                println("playerOne hits opponent's table-> game continues")
+                return
+            } else {
+                println("${player.name} missed the table, playerTwo gets plus point")
+                turnCounter++
+                secondPlayerScore++
+                getPlayersScore()
+                checkIfGameIsFinished()
+                println("this is $turnCounter turn")
+            }
         }
-
-
-    }
-
-    private fun playerTwoMove(playerTwo: Player, pingPongTable: PingPongTableImpl) {
-        println("playerTwo's turn")
-        val playerTwoHit = playerTwo.hit()
-        if (pingPongTable.getPlayerOneTablePoints().contains(playerTwoHit)) {
-            println("playerTwo hits opponent's table-> game continues")
-        } else {
-            println("playerTwo missed the table, playerOne gets plus point")
-            firstPlayerScore++
-            getPlayersScore()
-            checkIfGameIsFinished()
-
+        if (player.name.contains("Two")) {
+            if (pingPongTable.playerOneTablePoints.contains(hit)) {
+                println("playerTwo hits opponent's table-> game continues")
+                return
+            } else {
+                println("${player.name} missed the table, playerOne gets plus point")
+                turnCounter++
+                firstPlayerScore++
+                getPlayersScore()
+                checkIfGameIsFinished()
+                println("this is $turnCounter turn")
+            }
         }
     }
-
 
     private fun checkIfGameIsFinished() {
-        if (firstPlayerScore==MAXIMUM_GAME_POINT) isGameOver=true
-        if (secondPlayerScore==MAXIMUM_GAME_POINT) isGameOver=true
+        if (firstPlayerScore == MAXIMUM_GAME_POINT) isGameOver = true
+        if (secondPlayerScore == MAXIMUM_GAME_POINT) isGameOver = true
     }
 
     private fun getPlayersScore() {
-       println("current score is \n playerOne score: $firstPlayerScore \n playerTwo score : $secondPlayerScore")
+        println("current score is \n playerOne score: $firstPlayerScore \n playerTwo score : $secondPlayerScore")
     }
 
     private fun getWinner() {
-        if(firstPlayerScore>secondPlayerScore){
+        if (firstPlayerScore > secondPlayerScore) {
             println("playerOne is the Winner")
-        }else{
+        } else {
             println("playerTwo is the Winner")
         }
     }
 }
+

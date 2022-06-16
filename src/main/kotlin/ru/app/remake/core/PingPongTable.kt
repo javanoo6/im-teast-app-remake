@@ -3,9 +3,9 @@ package ru.app.remake.core
 import ru.app.remake.core.impl.TablePoint
 
 interface PingPongTable {
-    fun getAllTablePoints():Set<TablePoint>
-    fun getPlayerOneTablePoints():Set<TablePoint>
-    fun getPlayerTwoTablePoints():Set<TablePoint>
-    fun getPlayerOneTablePointsForShouting():Set<TablePoint>
-    fun getPlayerTwoTablePointsForShouting():Set<TablePoint>
+     val tablePoints: Set<TablePoint>
+     val playerOneTablePoints: Set<TablePoint>
+     val playerTwoTablePoints: Set<TablePoint>
+     val playerOneTablePointsForShouting: Set<TablePoint>
+     val playerTwoTablePointsForShouting: Set<TablePoint>
 }

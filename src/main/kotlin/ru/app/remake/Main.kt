@@ -8,12 +8,14 @@ fun main() {
     val pingPongTable = PingPongTableImpl()
     val game = GameImpl()
     val playerOne = PlayerImpl(
-            pingPongTable.getPlayerOneTablePoints(),
-            pingPongTable.getPlayerOneTablePointsForShouting()
+        pingPongTable.playerOneTablePoints,
+        pingPongTable.playerOneTablePointsForShouting,
+        "playerNumberOne"
     )
     val playerTwo = PlayerImpl(
-        pingPongTable.getPlayerTwoTablePoints(),
-        pingPongTable.getPlayerTwoTablePointsForShouting()
+        pingPongTable.playerTwoTablePoints,
+        pingPongTable.playerTwoTablePointsForShouting,
+        "playerNumberTwo"
     )
-    game.run (pingPongTable,playerOne,playerTwo )
+    game.run(pingPongTable, playerOne, playerTwo)
 }
