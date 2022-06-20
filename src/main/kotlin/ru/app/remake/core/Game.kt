@@ -1,7 +1,7 @@
 package ru.app.remake.core
 
-import ru.app.remake.core.impl.PingPongTableImpl
+import ru.app.remake.core.impl.PlayerImpl
 
 interface Game {
-    fun run(pingPongTable: PingPongTableImpl, playerOne: Player, playerTwo: Player)
+    fun run(playerOne: PlayerImpl, playerTwo: PlayerImpl)
 }

@@ -10,12 +10,12 @@ fun main() {
     val playerOne = PlayerImpl(
         pingPongTable.playerOneTablePoints,
         pingPongTable.playerOneTablePointsForShouting,
-        "playerNumberOne"
+        "игрокНомерОдин", 0
     )
     val playerTwo = PlayerImpl(
         pingPongTable.playerTwoTablePoints,
         pingPongTable.playerTwoTablePointsForShouting,
-        "playerNumberTwo"
+        "ИгрокНомерДва", 0
     )
-    game.run(pingPongTable, playerOne, playerTwo)
+    game.run(playerOne, playerTwo)
 }

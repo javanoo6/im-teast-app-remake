@@ -3,13 +3,12 @@ package ru.app.remake.core.impl
 import ru.app.remake.core.Player
 
 class PlayerImpl(
-    private val playerTablePoints: Set<TablePoint>,
+    val playerTablePoints: Set<TablePoint>,
     private val playerTableShouting: Set<TablePoint>,
-    override val name: String
+    override val name: String,
+    override var score: Int
 ) : Player {
     override fun hit(): TablePoint {
-        val hitPoint: TablePoint = playerTableShouting.random()
-        println("player hits $hitPoint")
-        return hitPoint
+        return playerTableShouting.random()
     }
 }
